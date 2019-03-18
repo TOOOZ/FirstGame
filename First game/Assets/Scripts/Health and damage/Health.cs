@@ -32,8 +32,6 @@ public class Health : MonoBehaviour
         if (takeDamage == false)
         {
             health -= damage;
-            StartCoroutine(iFrame());
-
             if (health <= 0)
             {
                 player.SetActive(false);
