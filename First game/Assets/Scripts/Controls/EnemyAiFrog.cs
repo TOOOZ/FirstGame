@@ -18,6 +18,7 @@ public class EnemyAiFrog : MonoBehaviour
     public Transform groundCheck;       // проверка земли
     public bool waiting = false;        // задержка между прыжками (флаг)
     public Animator anim;
+    public bool wasGrounded=false;
 
     void Start()
     {
@@ -37,7 +38,7 @@ public class EnemyAiFrog : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        grounded = Physics2D.OverlapCircle(groundCheck.position, 0.15f, whatIsGround); // checks if you are within 0.15 position in the Y of the ground
+        grounded = Physics2D.OverlapCircle(groundCheck.position, 0.15f, whatIsGround); // checks if you are within 0.15 position in the Y of the grounds
         playerInRange = Physics2D.OverlapCircle(transform.position, playerRange, player); // делаем невидимыйвидимый круг обнаружения
         if (playerInRange && !grounded && waiting)
         {
@@ -49,7 +50,7 @@ public class EnemyAiFrog : MonoBehaviour
             anim.SetBool("Jump", true); //включ анимацию прыжка
             StartCoroutine(Waiting());  //старт корутины
         }
-        if (grounded && waiting)
+        if (waiting && grounded)
             anim.SetBool("Jump", false); //разобраться тут
 
         if ((transform.position.x - thePlayer.transform.position.x) < 0 && !facingRight)

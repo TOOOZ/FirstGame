@@ -8,7 +8,7 @@ public class Health : MonoBehaviour
     public GameObject player;
     public Vector3 respawn = new Vector3(-17,-2,1);
     public int score;
-    public bool takeDamage = true;
+    public bool takeDamage = false;
     public SpriteRenderer _sprite = null;
 
     //vector3 position= new vector3(-17.563,-1,0);
