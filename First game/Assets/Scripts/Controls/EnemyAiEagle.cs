@@ -53,16 +53,11 @@ public class EnemyAiEagle : MonoBehaviour
 	
 	IEnumerator TestAttack()
 	{
-			rapidAttack=0;
-			playerInRangeClose=false;
-			playerRange=0;
 			attacking = true;
 			Debug.Log("Активно");
-			yield return new WaitForSeconds(2f);
+			yield return new WaitForSecondsRealtime(2);
 			StartCoroutine(SmoothMovement(thePlayer.transform.position));
 			Debug.Log(attacking=false);
-			playerRange=9;
-			rapidAttack=3;			
 	}
 	
 	protected IEnumerator SmoothMovement (Vector3 end)
@@ -75,7 +70,7 @@ public class EnemyAiEagle : MonoBehaviour
 			while(sqrRemainingDistance > float.Epsilon)
             {
                 //Find a new position proportionally closer to the end, based on the moveTime
-                Vector3 newPostion = Vector3.MoveTowards(rigidBody.position, end, (speed*4*Time.deltaTime));
+                Vector3 newPostion = Vector3.MoveTowards(transform.position, end, (speed*4*Time.deltaTime));
                 
                 //Call MovePosition on attached Rigidbody2D and move it to the calculated position.
                 rigidBody.MovePosition (newPostion);
@@ -84,7 +79,7 @@ public class EnemyAiEagle : MonoBehaviour
                 sqrRemainingDistance = (transform.position - end).sqrMagnitude;
                 
                 //Return and loop until sqrRemainingDistance is close enough to zero to end the function
-                yield return null;
+				yield return null;
             }
 		}
    

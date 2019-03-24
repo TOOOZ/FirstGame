@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class EnemyAiFrog : MonoBehaviour
 {
     private PlayerController thePlayer;
-    private Rigidbody2D rigidBody;
+    public Rigidbody2D rigidBody;
     public float speed;                 // скорость врага
     public float playerRange;           // радиус тревоги врага
     public LayerMask player;            // маска для определения Игрока
@@ -15,17 +15,19 @@ public class EnemyAiFrog : MonoBehaviour
     public float jumpForce;             // сила прышка
     public bool grounded;               // проверка земли
     public LayerMask whatIsGround;      // маска земли
-    public Transform groundCheck;       // проверка земли
     public bool waiting = false;        // задержка между прыжками (флаг)
     public Animator anim;
-    public bool wasGrounded=false;
+    public GameObject frog;
+	
+   
+    
 
     void Start()
     {
         thePlayer = FindObjectOfType<PlayerController>();
         rigidBody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-    }
+	}
 
     IEnumerator Waiting()       //корутина отвечающзая за задержку между прыжками
     {
@@ -33,12 +35,29 @@ public class EnemyAiFrog : MonoBehaviour
         yield return new WaitForSecondsRealtime(3);
         waiting = false;
     }
+	
+	void OnTriggerEnter2D(Collider2D col)
+	{
+		anim.SetBool("Jump", false);
+		grounded=true;
+	}
+	
+	void OnTriggerStay2D(Collider2D col)
+	{
+		grounded=true;
+	}
+	
+	void OnTriggerExit2D(Collider2D col)
+	{
+		
+		grounded=false;
+	}
 
 
     // Update is called once per frame
     void Update()
     {
-        grounded = Physics2D.OverlapCircle(groundCheck.position, 0.15f, whatIsGround); // checks if you are within 0.15 position in the Y of the grounds
+       
         playerInRange = Physics2D.OverlapCircle(transform.position, playerRange, player); // делаем невидимыйвидимый круг обнаружения
         if (playerInRange && !grounded && waiting)
         {
@@ -50,9 +69,7 @@ public class EnemyAiFrog : MonoBehaviour
             anim.SetBool("Jump", true); //включ анимацию прыжка
             StartCoroutine(Waiting());  //старт корутины
         }
-        if (waiting && grounded)
-            anim.SetBool("Jump", false); //разобраться тут
-
+		
         if ((transform.position.x - thePlayer.transform.position.x) < 0 && !facingRight)
         {
             //поворот
@@ -65,6 +82,11 @@ public class EnemyAiFrog : MonoBehaviour
             Flip();
         }
 
+    }
+
+    public void Dead()
+    {
+        Destroy(frog);
     }
 
     void Flip()

@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     public void OnCrouching(bool crouching)
     {
         anim.SetBool("Crouching", crouching);
-		Debug.Log(crouching);
+		
    }
 
 

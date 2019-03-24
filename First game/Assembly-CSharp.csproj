@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Controls\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Health and damage\DamageFire.cs" />
     <Compile Include="Assets\Scripts\Health and damage\DeathZone.cs" />
+    <Compile Include="Assets\Scripts\Health and damage\EnemyHead.cs" />
     <Compile Include="Assets\Scripts\Health and damage\Health.cs" />
     <Compile Include="Assets\Scripts\Other\Star.cs" />
     <None Include="Assets\Sunnyland\demo\assets\sound\music-readme.txt" />
