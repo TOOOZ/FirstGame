@@ -1,8 +1,8 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\EnemyAi.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Controls\EnemyAiFrog.cs">
     <Files>
-      <File FileName="Assets\Scripts\EnemyAi.cs" Line="16" Column="1" />
+      <File FileName="Assets\Scripts\Controls\EnemyAiFrog.cs" Line="84" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

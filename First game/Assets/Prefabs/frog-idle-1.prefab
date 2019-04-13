@@ -12,11 +12,10 @@ GameObject:
   - component: {fileID: 4188131559186171163}
   - component: {fileID: 4188131559186171160}
   - component: {fileID: 4188131559186171161}
-  - component: {fileID: 4188131559186171158}
-  - component: {fileID: 4188131559186171156}
   - component: {fileID: 4188131559186171157}
   - component: {fileID: 4188131559186171159}
-  m_Layer: 0
+  - component: {fileID: 3270013469361547574}
+  m_Layer: 10
   m_Name: frog-idle-1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -30,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4188131559186171154}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -18.75, y: -0.33, z: -0.21802592}
   m_LocalScale: {x: 2.3766942, y: 2.3766942, z: 2.3766942}
   m_Children:
@@ -74,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 8
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 86ca59b9bca0e409b9ba2784fbe69f01, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -126,46 +125,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &4188131559186171158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4188131559186171154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bf50b588e8cda243b35d41c8e2848e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  someHealth: {fileID: 0}
-  damage: 0
---- !u!61 &4188131559186171156
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4188131559186171154}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.017222814, y: -0.12138313}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.35, y: 0.32}
-    newSize: {x: 0.35, y: 0.32}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.23933561, y: 0.03581673}
-  m_EdgeRadius: 0
 --- !u!114 &4188131559186171157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,6 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2df24dec82233439b0ccacab841215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathPrefab: {fileID: 2091106800284209288, guid: 38356317f4c3bc646802a00af3005090,
+    type: 3}
   speed: 2
   playerRange: 4
   player:
@@ -192,7 +153,6 @@ MonoBehaviour:
     m_Bits: 256
   waiting: 0
   anim: {fileID: 0}
-  frog: {fileID: 4188131559186171154}
 --- !u!61 &4188131559186171159
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -206,7 +166,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0036667064, y: -0.09900391}
+  m_Offset: {x: 0.008365266, y: -0.09900391}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -217,7 +177,33 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.14221387, y: 0.0046542287}
+  m_Size: {x: 0.16627781, y: 0.0046542287}
+  m_EdgeRadius: 0
+--- !u!61 &3270013469361547574
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4188131559186171154}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.017423779, y: -0.12516281}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.35, y: 0.32}
+    newSize: {x: 0.35, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.24077338, y: 0.03904748}
   m_EdgeRadius: 0
 --- !u!1 &4188131560389268502
 GameObject:
@@ -230,6 +216,8 @@ GameObject:
   - component: {fileID: 4188131560389268505}
   - component: {fileID: 4188131560389268507}
   - component: {fileID: 4188131560389268506}
+  - component: {fileID: 5710999459542695949}
+  - component: {fileID: 7554315602336967976}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -289,5 +277,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73f7282938c57bf4bbb0bab5c5be9338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  frog: {fileID: 4188131559186171157}
+  player: {fileID: 941482115, guid: b67f52eb46ad9fd4aa0132075d817a61, type: 3}
+  enemy: {fileID: 4188131559186171157}
+--- !u!50 &5710999459542695949
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4188131560389268502}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &7554315602336967976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4188131560389268502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf50b588e8cda243b35d41c8e2848e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  someHealth: {fileID: 0}
+  damage: 0
+  head: {fileID: 0}

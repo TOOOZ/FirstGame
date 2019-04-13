@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class EnemyAiFrog : MonoBehaviour
+public class EnemyAiFrog : Enemies
 {
     private PlayerController thePlayer;
-    public Rigidbody2D rigidBody;
+    private Rigidbody2D rigidBody;
     public float speed;                 // скорость врага
     public float playerRange;           // радиус тревоги врага
     public LayerMask player;            // маска для определения Игрока
@@ -16,11 +16,7 @@ public class EnemyAiFrog : MonoBehaviour
     public bool grounded;               // проверка земли
     public LayerMask whatIsGround;      // маска земли
     public bool waiting = false;        // задержка между прыжками (флаг)
-    public Animator anim;
-    public GameObject frog;
-	
-   
-    
+    public Animator anim;    
 
     void Start()
     {
@@ -42,14 +38,8 @@ public class EnemyAiFrog : MonoBehaviour
 		grounded=true;
 	}
 	
-	void OnTriggerStay2D(Collider2D col)
-	{
-		grounded=true;
-	}
-	
 	void OnTriggerExit2D(Collider2D col)
-	{
-		
+	{		
 		grounded=false;
 	}
 
@@ -84,10 +74,6 @@ public class EnemyAiFrog : MonoBehaviour
 
     }
 
-    public void Dead()
-    {
-        Destroy(frog);
-    }
 
     void Flip()
     {

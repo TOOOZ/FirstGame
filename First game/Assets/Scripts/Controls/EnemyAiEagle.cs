@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAiEagle : MonoBehaviour
+public class EnemyAiEagle : Enemies
 {
     private PlayerController thePlayer;
     private Rigidbody2D rigidBody;
     public float speed;                 // скорость врага
     public float playerRange;           // радиус тревоги врага
     public LayerMask player;            // маска для определения Игрока
-    public bool playerInRangeFar;          // Условие при котором враг перестает следовать если игрок вышел из зоны тревоги
+    public bool playerInRangeFar;       // Условие при котором враг перестает следовать если игрок вышел из зоны тревоги
     public bool facingRight = true;     // поворот к игроку лицом
 	public float rapidAttack;			// круг для определения резкой атаки
 	public bool playerInRangeClose;    // Игрок достаточно близок для атаки
 	public bool attacking;
+	private Vector3 playerPosition;
 	
 
 
@@ -37,27 +38,41 @@ public class EnemyAiEagle : MonoBehaviour
 			StartCoroutine(TestAttack());
 		}
 			
-        if ((transform.position.x - thePlayer.transform.position.x) < 0 && !facingRight)
+        if ((transform.position.x - thePlayer.transform.position.x) < 0 && !facingRight && !attacking)
         {
             //поворот
             Flip();
         }
         //и в другую сторону
-        else if ((transform.position.x - thePlayer.transform.position.x) > 0 && facingRight)
+        else if ((transform.position.x - thePlayer.transform.position.x) > 0 && facingRight && !attacking)
         {
             // ... flip the player.
             Flip();
         }
-
+		
+		if ((transform.position.x - playerPosition.x) < 0 && !facingRight && attacking)
+        {
+            //поворот
+            Flip();
+        }
+		
+        //и в другую сторону
+        else if ((transform.position.x - playerPosition.x) > 0 && facingRight && attacking)
+        {
+            // ... flip the player.
+            Flip();
+        }
+	
     }
 	
 	IEnumerator TestAttack()
 	{
 			attacking = true;
-			Debug.Log("Активно");
-			yield return new WaitForSecondsRealtime(2);
-			StartCoroutine(SmoothMovement(thePlayer.transform.position));
-			Debug.Log(attacking=false);
+			playerPosition = new Vector3(thePlayer.transform.position.x, thePlayer.transform.position.y,
+			thePlayer.transform.position.z);
+			yield return new WaitForSecondsRealtime(1);
+			StartCoroutine(SmoothMovement(playerPosition));
+
 	}
 	
 	protected IEnumerator SmoothMovement (Vector3 end)
@@ -71,7 +86,7 @@ public class EnemyAiEagle : MonoBehaviour
             {
                 //Find a new position proportionally closer to the end, based on the moveTime
                 Vector3 newPostion = Vector3.MoveTowards(transform.position, end, (speed*4*Time.deltaTime));
-                
+                Debug.Log(playerPosition);
                 //Call MovePosition on attached Rigidbody2D and move it to the calculated position.
                 rigidBody.MovePosition (newPostion);
                 
@@ -81,6 +96,7 @@ public class EnemyAiEagle : MonoBehaviour
                 //Return and loop until sqrRemainingDistance is close enough to zero to end the function
 				yield return null;
             }
+			attacking = false;
 		}
    
     void Flip()

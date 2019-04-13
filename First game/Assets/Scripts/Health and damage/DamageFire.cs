@@ -6,16 +6,23 @@ public class DamageFire : MonoBehaviour
 {
     public Health someHealth;
     public int damage;
+	public Collider2D head;
 
+	IEnumerator Head()       //корутина отвечающзая за задержку между прыжками
+    {
+		head.enabled = false;
+		yield return new WaitForSecondsRealtime(0.8f);
+		head.enabled = true;
+    }
+	
     // Start is called before the first frame update
    void OnTriggerStay2D(Collider2D col)
    {
 	   if(col.gameObject.tag == "Player")   //проверка тега объекта gameObject 
-			someHealth.TakingDamage(damage);
+	   {
+			col.gameObject.GetComponent<Health>().TakingDamage(damage);
+			StartCoroutine(Head());			
+	   }
    }
-    // Update is called once per frame
-    void Update()
-    {
-             
-    }
+
 }

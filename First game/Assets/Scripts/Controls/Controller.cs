@@ -82,7 +82,7 @@ public class Controller : MonoBehaviour
     public void KillEnemy()
     {
         if (!grounded)
-            rigidBody.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+            rigidBody.AddForce(transform.up *jumpForce, ForceMode2D.Impulse);
     }
    
     public void Move(float ax,bool crouch)

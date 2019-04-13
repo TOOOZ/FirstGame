@@ -119,5 +119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bf50b588e8cda243b35d41c8e2848e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  someHealth: {fileID: 0}
+  someHealth: {fileID: 1164823899, guid: b67f52eb46ad9fd4aa0132075d817a61, type: 3}
   damage: 3
+  head: {fileID: 0}
