@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
     public float health;
     public GameObject player;
     public Vector3 respawn = new Vector3(-17,-2,1);
-    public int score;
+    public int playerScore;
     public bool takeingDamage = false;
     public SpriteRenderer _sprite ;
 	private bool flashing;
@@ -17,8 +18,10 @@ public class Health : MonoBehaviour
 	private Color flashColor = new Color(1f, 1f, 1f, 0f);
 	private Color normalColor = new Color(1f, 1f, 1f, 1f);
 	private Rigidbody2D rigidBody;
-	
-	[HideInInspector]
+	public Image hP;
+	public Text score;
+
+    //[HideInInspector]
 	public bool stun = false;
 	
 	
@@ -28,6 +31,7 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+		//score.text=" x "+playerScore;
 		rigidBody = GetComponent<Rigidbody2D>();
         _sprite = gameObject.GetComponent<SpriteRenderer>();
     }
@@ -56,7 +60,8 @@ public class Health : MonoBehaviour
 	
     public void PickStar(int sc)
     {
-        score += sc;
+        playerScore += sc;
+		score.text=" x "+playerScore;
     }
 	
 	IEnumerator Iframe()       //корутина отвечающзая за задержку между прыжками
@@ -72,7 +77,7 @@ public class Health : MonoBehaviour
 	IEnumerator Stun()       //корутина отвечающзая за задержку между прыжками
     {
 		
-		yield return new WaitForSecondsRealtime(0.5f);
+		yield return new WaitForSecondsRealtime(0.3f);
 		stun=false;
 		
     }
@@ -83,26 +88,26 @@ public class Health : MonoBehaviour
     public void TakingDamage(float damage)
     {
         if (takeingDamage == false)
-        {
-			stun = true;
-			rigidBody.velocity=Vector2.zero;
-			StartCoroutine(Stun());
-			player.GetComponent<Animator>().SetBool("Damage", true);
-			Debug.Log("Получен урон");
-			flashing=true;
-			takeingDamage=true;
-			time=DateTime.Now;
-			StartCoroutine(Iframe());			
-            health -= damage;
-            if (health <= 0)
+        {	
+			health -= damage;
+			hP.fillAmount= health*0.20f;
+			if (health <= 0)
             {
                 player.SetActive(false);
                 player.transform.position = respawn;
                 player.SetActive(true);
-                health = 10;
+                health = 5;
 				takeingDamage=false;
 				flashing=false;
-            }
+            }	
+			stun = true;
+			rigidBody.velocity=Vector2.zero;
+			StartCoroutine(Stun());
+			player.GetComponent<Animator>().SetBool("Damage", true);
+			flashing=true;
+			takeingDamage=true;
+			time=DateTime.Now;
+			StartCoroutine(Iframe());			
         }
 		               
     }

@@ -15,13 +15,16 @@ public class Controller : MonoBehaviour
     public float movementSmoothing = .08f;      //Плавность движения
     public bool grounded;                       //флаг земли
     public bool facingRight = true;             // В какцую сторону персонаж смотрит
-    public Vector3 velocity = Vector3.zero;     //скорость
+    private Vector3 velocity = Vector3.zero;     //скорость
+	private Vector2 jump = Vector2.right;
     private Rigidbody2D rigidBody;
     public PlayerController player;	            // скрипт персонажа
     public Transform сeilingCheck;              //проверка  на препятствия над головой
     public Transform groundCheck;                //Проверка земли
     public Collider2D crouchDisableCollider;    //колайдер выключается 
     public LayerMask whatIsGround;              //определение что есть земля
+	
+	
    
     [Header("Events")]                          // Заголовок события    
     [Space]                                     // Пустое место
@@ -82,7 +85,10 @@ public class Controller : MonoBehaviour
     public void KillEnemy()
     {
         if (!grounded)
-            rigidBody.AddForce(transform.up *jumpForce, ForceMode2D.Impulse);
+		{
+		 rigidBody.velocity=Vector2.right;
+         rigidBody.AddForce(transform.up *jumpForce, ForceMode2D.Impulse);
+		}
     }
    
     public void Move(float ax,bool crouch)

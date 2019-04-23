@@ -13,7 +13,7 @@ public class DeathZone : MonoBehaviour
 	  
 	   if(col.gameObject.tag == "Player")   //проверка тега объекта gameObject 
 	   {
-			someHealth.TakingDamage(10);
+			someHealth.TakingDamage(1000);
 	   }
    }
 }

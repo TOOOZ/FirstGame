@@ -282,5 +282,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   someHealth: {fileID: 1164823899, guid: b67f52eb46ad9fd4aa0132075d817a61, type: 3}
-  damage: 0
+  damage: 1
   head: {fileID: 1123781219}

@@ -4,26 +4,16 @@ using UnityEngine;
 
 public class Star : MonoBehaviour
 {
-    public Health starCount; //счет
-    public GameObject star;
+	private bool pick=false;
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Player")         //если игров попал в триггер
+        if (col.gameObject.tag == "Player" && !pick)         //если игров попал в триггер
         {
-            starCount.PickStar(1);
-            Destroy(star);
-            
+			pick=true; 										 //Игрок заденет 2 коллайдерами и все сломаеться
+			Destroy(gameObject);
+			Debug.Log("+1");
+            col.gameObject.GetComponent<Health>().PickStar(1);            
         }
-    }
-    // Start is called before the first frame update
-    void Start()
-    {        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

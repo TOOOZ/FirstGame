@@ -227,7 +227,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 3
 --- !u!61 &4439745800286076568
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -348,3 +348,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   someHealth: {fileID: 1164823899, guid: b67f52eb46ad9fd4aa0132075d817a61, type: 3}
   damage: 1
+  head: {fileID: 3472014238035559359}

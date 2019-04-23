@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7b88144f5ea7a1448cb971eef5a7b5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 5
   player: {fileID: 1503416922}
   respawn: {x: -17, y: -2, z: 1}
   score: 0
