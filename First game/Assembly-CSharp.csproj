@@ -75,11 +75,18 @@
     <Compile Include="Assets\Scripts\Other\Checkpoint.cs" />
     <Compile Include="Assets\Scripts\Other\Enemies.cs" />
     <Compile Include="Assets\Scripts\Other\Mover.cs" />
+    <Compile Include="Assets\Scripts\Other\SceneController.cs" />
     <Compile Include="Assets\Scripts\Other\ShotDestroy.cs" />
     <Compile Include="Assets\Scripts\Other\Spike.cs" />
     <Compile Include="Assets\Scripts\Other\Star.cs" />
+    <None Include="Assets\UI\Ui pack\Spritesheet\greenSheet.xml" />
+    <None Include="Assets\UI\Ui pack\Spritesheet\blueSheet.xml" />
+    <None Include="Assets\UI\Ui pack\Spritesheet\yellowSheet.xml" />
+    <None Include="Assets\UI\Ui pack\Spritesheet\greySheet.xml" />
     <None Include="Assets\Sunnyland\demo\assets\sound\music-readme.txt" />
+    <None Include="Assets\UI\Ui pack\license.txt" />
     <None Include="Assets\UI\Spritesheet\spritesheetInfo.txt" />
+    <None Include="Assets\UI\Ui pack\Spritesheet\redSheet.xml" />
     <Reference Include="Cinemachine">
       <HintPath>D:/Project/First game/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
     </Reference>

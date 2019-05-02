@@ -31,7 +31,7 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-		//score.text=" x "+playerScore;
+		score.text=" x "+playerScore;
 		rigidBody = GetComponent<Rigidbody2D>();
         _sprite = gameObject.GetComponent<SpriteRenderer>();
     }
