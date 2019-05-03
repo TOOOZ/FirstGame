@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public Animator anim;                     // подключение анимации      
     public bool crouch;
 	private Health health;
+    public SceneController pause;
 	
 
     void Start()
@@ -30,10 +31,13 @@ public class PlayerController : MonoBehaviour
 		
    }
 
-
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetButtonDown("Pause"))
+        {
+            pause.Pause();
+        }
 		if(!health.stun){
 			if (Input.GetButtonDown("Jump"))
 			{

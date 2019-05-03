@@ -97,7 +97,8 @@ public class Health : MonoBehaviour
                 player.transform.position = respawn;
                 player.SetActive(true);
                 health = 5;
-				takeingDamage=false;
+                hP.fillAmount = health;
+                takeingDamage =false;
 				flashing=false;
             }	
 			stun = true;

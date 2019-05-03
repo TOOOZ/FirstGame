@@ -21,7 +21,8 @@ public class DamageFire : MonoBehaviour
 	   if(col.gameObject.tag == "Player")   //проверка тега объекта gameObject 
 	   {
 			col.gameObject.GetComponent<Health>().TakingDamage(damage);
-			StartCoroutine(Head());			
+			if(head)
+               StartCoroutine(Head());			
 	   }
    }
 
