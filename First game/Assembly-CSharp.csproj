@@ -65,7 +65,6 @@
     <Compile Include="Assets\Scripts\Controls\EnemyAiEagle.cs" />
     <Compile Include="Assets\Scripts\Controls\EnemyAiFrog.cs" />
     <Compile Include="Assets\Scripts\Controls\EnemyPlant.cs" />
-    <Compile Include="Assets\Scripts\Controls\FlyingIslandMove.cs" />
     <Compile Include="Assets\Scripts\Controls\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Health and damage\DamageFire.cs" />
     <Compile Include="Assets\Scripts\Health and damage\DeathAnimation.cs" />

@@ -8,8 +8,11 @@ public class SceneController : MonoBehaviour
 {
     public GameObject settings;
     public GameObject pauseMenu;
+    public GameObject gameOverMenu;
     public bool settingsMenu = false;
     public bool pause= false;
+    public Health player;
+ 
 
 
   
@@ -56,6 +59,20 @@ public class SceneController : MonoBehaviour
             settings.SetActive(false);
             Time.timeScale = 1;
         }
+    }
+
+    public void GameOver()
+    {
+        gameOverMenu.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void Load()
+    {
+        player.Respawn();
+        gameOverMenu.SetActive(false);
+        Time.timeScale = 1;
+
     }
 
     public void ExitMenu()
