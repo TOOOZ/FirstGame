@@ -13,10 +13,10 @@ public class EnemyAiFrog : Enemies
     public bool playerInRange;          // Условие при котором враг перестает следовать если игрок вышел из зоны тревоги
     public bool facingRight = false;    // поворот к игроку лицом
     public float jumpForce;             // сила прышка
-    public bool grounded;               // проверка земли
-    public LayerMask whatIsGround;      // маска земли
+    public bool grounded;               // проверка зе
     public bool waiting = false;        // задержка между прыжками (флаг)
-    public Animator anim;    
+    public Animator anim;
+    public AudioSource jumpSound;
 
     void Start()
     {
@@ -34,13 +34,17 @@ public class EnemyAiFrog : Enemies
 	
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		anim.SetBool("Jump", false);
-		grounded=true;
+        if (col.gameObject.tag == "Ground")
+        {   Debug.Log(col);
+            anim.SetBool("Jump", false);
+            grounded = true;
+        }
 	}
 	
 	void OnTriggerExit2D(Collider2D col)
-	{		
-		grounded=false;
+	{
+        if (col.gameObject.tag == "Ground")
+            grounded =false;
 	}
 
 
@@ -49,12 +53,13 @@ public class EnemyAiFrog : Enemies
     {
        
         playerInRange = Physics2D.OverlapCircle(transform.position, playerRange, player); // делаем невидимыйвидимый круг обнаружения
-        if (playerInRange && !grounded && waiting)
+        if (!grounded && waiting)
         {
            transform.position = Vector3.MoveTowards(transform.position, thePlayer.transform.position, speed * Time.deltaTime); //передвижение во время полета
         }
         if (playerInRange && grounded && !waiting)
         {
+            jumpSound.Play();
             rigidBody.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);  //прыжок
             anim.SetBool("Jump", true); //включ анимацию прыжка
             StartCoroutine(Waiting());  //старт корутины

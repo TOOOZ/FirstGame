@@ -10,8 +10,7 @@ public class PlayerController : MonoBehaviour
     public bool crouch;
 	private Health health;
     public SceneController pause;
-	
-
+   
     void Start()
     {
         playerController = GetComponent<Controller>();
@@ -41,7 +40,7 @@ public class PlayerController : MonoBehaviour
 		if(!health.stun){
 			if (Input.GetButtonDown("Jump"))
 			{
-				playerController.Jump();
+                playerController.Jump();
 				anim.SetBool("Jump", true);
 			}
 		

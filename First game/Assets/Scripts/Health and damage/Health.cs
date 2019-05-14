@@ -21,6 +21,7 @@ public class Health : MonoBehaviour
 	public Image hP;
 	public Text score;
     public SceneController gameOverMenu;
+    public AudioSource stunSound;
 
     //[HideInInspector]
 	public bool stun = false;
@@ -40,7 +41,6 @@ public class Health : MonoBehaviour
 
 	void Update()
 	{
-        Debug.Log(respawn);
 		if(flashing)
 		{	
 			if((DateTime.Now-time).Milliseconds>=100)
@@ -79,8 +79,7 @@ public class Health : MonoBehaviour
 	
 	IEnumerator Stun()       //корутина отвечающзая за задержку между прыжками
     {
-		
-		yield return new WaitForSecondsRealtime(0.3f);
+        yield return new WaitForSecondsRealtime(0.3f);
 		stun=false;
 		
     }
@@ -101,8 +100,9 @@ public class Health : MonoBehaviour
     public void TakingDamage(float damage)
     {
         if (takeingDamage == false)
-        {	
-			health -= damage;
+        {
+            stunSound.Play();
+            health -= damage;
 			hP.fillAmount= health*0.20f;
             if (health <= 0)
             {
@@ -111,7 +111,6 @@ public class Health : MonoBehaviour
             }
             else
             {
-
                 stun = true;
                 rigidBody.velocity = Vector2.zero;
                 StartCoroutine(Stun());

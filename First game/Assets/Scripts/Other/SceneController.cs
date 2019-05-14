@@ -12,9 +12,6 @@ public class SceneController : MonoBehaviour
     public bool settingsMenu = false;
     public bool pause= false;
     public Health player;
- 
-
-
   
     public void StartGame()
     {

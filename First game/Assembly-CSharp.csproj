@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\Other\Checkpoint.cs" />
     <Compile Include="Assets\Scripts\Other\Enemies.cs" />
     <Compile Include="Assets\Scripts\Other\Mover.cs" />
+    <Compile Include="Assets\Scripts\Other\PlatformMover.cs" />
     <Compile Include="Assets\Scripts\Other\SceneController.cs" />
     <Compile Include="Assets\Scripts\Other\ShotDestroy.cs" />
     <Compile Include="Assets\Scripts\Other\Spike.cs" />

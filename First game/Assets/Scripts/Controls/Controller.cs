@@ -23,6 +23,7 @@ public class Controller : MonoBehaviour
     public Transform groundCheck;                //Проверка земли
     public Collider2D crouchDisableCollider;    //колайдер выключается 
     public LayerMask whatIsGround;              //определение что есть земля
+    public AudioSource jumpSound;
 	
 	
    
@@ -76,6 +77,7 @@ public class Controller : MonoBehaviour
     {
         if (grounded) //проверка на заземление
         {
+            jumpSound.Play();
             rigidBody.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);   // расчет силы прыжка
         } 
         
