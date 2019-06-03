@@ -94,7 +94,14 @@ public class Health : MonoBehaviour
         _sprite.color = normalColor;
     }
 
-    
+    public void HpHeal()
+    {
+        if (health < 5 && health > 0)
+        {
+            health++;
+            hP.fillAmount = health * 0.20f;
+        }
+    }
 
     // Update is called once per frame
     public void TakingDamage(float damage)

@@ -260,7 +260,7 @@ MonoBehaviour:
   deathPrefab: {fileID: 2091106800284209288, guid: 38356317f4c3bc646802a00af3005090,
     type: 3}
   speed: 2
-  playerRange: 5
+  playerRange: 8
   player:
     serializedVersion: 2
     m_Bits: 512

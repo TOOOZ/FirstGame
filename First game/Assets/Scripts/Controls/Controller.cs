@@ -150,6 +150,19 @@ public class Controller : MonoBehaviour
         }
      }
 
+    IEnumerator SpeedBuff()
+    {
+        runSpeed = 12f;
+        yield return new WaitForSecondsRealtime(10);
+        runSpeed = 8f;
+        
+    }
+
+    public void SpeedUp()
+    {
+        StartCoroutine(SpeedBuff());
+    }
+
     public void Flip()
     {
         // персонаж смотрит на право

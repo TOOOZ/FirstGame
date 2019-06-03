@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4188131559186171157}
   - component: {fileID: 4188131559186171159}
   - component: {fileID: 3270013469361547574}
-  - component: {fileID: 4236489354011015771}
+  - component: {fileID: 1778850327779426130}
   m_Layer: 10
   m_Name: frog-idle-1
   m_TagString: Enemy
@@ -142,7 +142,7 @@ MonoBehaviour:
   deathPrefab: {fileID: 2091106800284209288, guid: 38356317f4c3bc646802a00af3005090,
     type: 3}
   speed: 2
-  playerRange: 4
+  playerRange: 8
   player:
     serializedVersion: 2
     m_Bits: 512
@@ -152,7 +152,7 @@ MonoBehaviour:
   grounded: 0
   waiting: 0
   anim: {fileID: 0}
-  jumpSound: {fileID: 4236489354011015771}
+  jumpSound: {fileID: 1778850327779426130}
 --- !u!61 &4188131559186171159
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -205,7 +205,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.24077338, y: 0.03904748}
   m_EdgeRadius: 0
---- !u!82 &4236489354011015771
+--- !u!82 &1778850327779426130
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -215,8 +215,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 41826503e5fb37842954fb6f8ad5d2b2, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 6a1dc952e3ca29e44af11327dc68c903, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
